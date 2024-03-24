@@ -1,30 +1,35 @@
 <script setup lang="ts">
-import OlMap from 'ol/Map'
-import View from 'ol/View'
-import TileLayer from 'ol/layer/Tile'
-import XYZ from 'ol/source/XYZ'
-import { onMounted } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import { storeToRefs } from 'pinia'
+import type { Map as OlMap } from 'ol'
+
+import { computeMapContextDiff } from '@geospatial-sdk/core'
+import { applyContextDiffToMap, createMapFromContext } from '@geospatial-sdk/openlayers'
+
+import { useMapStore } from '@/stores/map'
+
+const mapElement = ref<HTMLElement>()
+const mapStore = useMapStore()
+const { mapContext, mapIsInitialized } = storeToRefs(mapStore)
+let map: OlMap
+
+watch(
+  [mapContext, mapIsInitialized],
+  ([newMapContext, newIsInitialized], [oldMapContext, oldIsInitialized]) => {
+  if (newIsInitialized === false) {
+    return
+  }
+
+  applyContextDiffToMap(map, computeMapContextDiff(newMapContext, oldMapContext))
+}, {immediate: false})
 
 onMounted(() => {
-  new OlMap({
-    target: 'map',
-      layers: [
-        new TileLayer({
-          source: new XYZ({
-            url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
-          })
-        })
-      ],
-      view: new View({
-        center: [0, 0],
-        zoom: 2
-      })
-    })
+  map = createMapFromContext(mapContext.value, mapElement.value)
 })
 </script>
 
 <template>
-  <div id="map" class="map"></div>
+  <div id="map" class="map" ref="mapElement"></div>
 </template>
 
 <style scoped>

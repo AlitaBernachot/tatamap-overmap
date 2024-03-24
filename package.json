@@ -16,6 +16,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@geospatial-sdk/core": "^0.0.5-alpha.2",
+    "@geospatial-sdk/geocoding": "^0.0.5-alpha.2",
+    "@geospatial-sdk/openlayers": "^0.0.5-alpha.2",
     "ol": "^9.0.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
