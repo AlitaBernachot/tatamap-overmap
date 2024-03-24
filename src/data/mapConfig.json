@@ -1,0 +1,11 @@
+{
+    "mapConfig": {
+        "MapContextView": {
+            "zoom": 5,
+            "center": [
+                6,
+                48.5
+            ]
+        }
+    }
+}

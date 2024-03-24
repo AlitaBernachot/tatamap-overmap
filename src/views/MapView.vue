@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+
+import type { MapContextView } from '@geospatial-sdk/core'
 
 import MapItem from '@/components/map/MapItem.vue'
 import BasemapSelector from '@/components/map/BasemapSelector.vue'
@@ -9,48 +12,22 @@ import type { Layer } from '@/models/layer'
 import { useAppStore } from '@/stores/app'
 import { useMapStore } from '@/stores/map'
 
+import jsonLayersDictionary from '@/data/layersDictionary.json'
+import jsonMapConfig from '@/data/mapConfig.json'
+
 const appStore = useAppStore()
 const mapStore = useMapStore()
 
-const layersDictionary: Layer[] = [
-  {
-    id: 'wms1',
-    layerDefinition: {
-      type: 'wms',
-      url: 'https://data.geopf.fr/wms-r/wms',
-      name: 'INSEE.FILOSOFI.POPULATION'
-    }
-  }, {
-    id: 'wms2',
-    layerDefinition: {
-      type: 'wms',
-      url: 'https://www.geoportal.de/openurl/https/services.bgr.de/wms/boden/gmk1000r/',
-      name: 'geoportal'
-    }
-  }, {
-    id: 'xyz',
-    layerDefinition: {
-      type: 'xyz',
-      url: 'https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=get_your_own_D6rA4zTHduk6KOKTXzGB',
-    }
-  }
-]
+const { baseLayers } = storeToRefs(appStore)
+
+const layersDictionary = <Layer[]>(jsonLayersDictionary.layersDictionary)
+const mapConfig = jsonMapConfig.mapConfig
 
 onMounted(() => {
   appStore.setLayersDictionary(layersDictionary)
-  mapStore.setBaseLayer({
-    id: 'base',
-    isBaseLayer: true,
-    layerDefinition: {
-      type: 'xyz',
-      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    }
-  })
-  mapStore.setLayersContext(layersDictionary)
-  mapStore.setView({
-    zoom: 5,
-    center: [6, 48.5]
-  })
+  mapStore.setBaseLayer(baseLayers.value[0])
+  mapStore.setLayersContext([])
+  mapStore.setView(<MapContextView>mapConfig.MapContextView)
 })
 </script>
 

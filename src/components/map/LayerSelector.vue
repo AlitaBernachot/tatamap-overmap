@@ -8,7 +8,7 @@ import { useMapStore } from '@/stores/map'
 const appStore = useAppStore()
 const mapStore = useMapStore()
 
-const { layersDictionary } = storeToRefs(appStore)
+const { layers } = storeToRefs(appStore)
 
 function toggleLayer(layerId: string, layer?: Layer): void {
   mapStore.toggleLayer(layerId, layer)
@@ -19,10 +19,10 @@ function toggleLayer(layerId: string, layer?: Layer): void {
   <div id="layer-selector" class="layer-selector">
     <h3>Layer selector</h3>
     <ul>
-      <li v-for="layer in layersDictionary" :id="`layer-${layer.id}`">
+      <li v-for="layer in layers" :id="`layer-${layer.id}`">
         <input type="checkbox" :checked="mapStore.hasLayer(layer.id)" @click="toggleLayer(layer.id, layer)" />
         <label @click="toggleLayer(layer.id, layer)">
-          {{ layer.layerDefinition.name || layer.id }}
+          {{ layer.name || layer.id }}
         </label>
       </li>
     </ul>
@@ -39,6 +39,6 @@ ul {
 }
 
 li {
-  @apply m-0 p-0 list-none;
+  @apply m-0 p-0 list-none flex gap-2;
 }
 </style>

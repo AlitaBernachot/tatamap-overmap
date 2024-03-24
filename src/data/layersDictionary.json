@@ -1,0 +1,57 @@
+{
+    "layersDictionary": [
+        {
+            "id": "biodiv-sports.fr",
+            "name": "Biodiv Sports",
+            "layerDefinition": {
+                "type": "geojson",
+                "url": "https://biodiv-sports.fr/api/v2/sensitivearea/?format=geojson&page_size=10000&language=fr&period=1,2,3,4,5,6,7,8,9,10,11,12&practices=1,2,3,4,5"
+            }
+        },
+        {
+            "id": "wms1",
+            "name": "Insee Population",
+            "layerDefinition": {
+                "type": "wms",
+                "url": "https://data.geopf.fr/wms-r/wms",
+                "name": "INSEE.FILOSOFI.POPULATION"
+            }
+        },
+        {
+            "id": "base-osm-fr",
+            "name": "Osm fr",
+            "isBaseLayer": true,
+            "layerDefinition": {
+                "type": "xyz",
+                "url": "https://a.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
+            }
+        },
+        {
+            "id": "base-osm",
+            "name": "Openstreetmap",
+            "isBaseLayer": true,
+            "layerDefinition": {
+                "type": "xyz",
+                "url": "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+            }
+        },
+        {
+            "id": "xyz",
+            "name": "Maptiler Satellite",
+            "isBaseLayer": true,
+            "layerDefinition": {
+                "type": "xyz",
+                "url": "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=get_your_own_D6rA4zTHduk6KOKTXzGB"
+            }
+        },
+        {
+            "id": "base-sis",
+            "name": "Sismicité",
+            "layerDefinition": {
+                "type": "wfs",
+                "featureType": "SIS_INTENSITE_EVTCOM",
+                "url": "http://georisques.gouv.fr/services?REQUEST=GetCapabilities&SERVICE=WFS&VERSION=1.1.0"
+            }
+        }
+    ]
+}

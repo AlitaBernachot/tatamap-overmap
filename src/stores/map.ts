@@ -44,6 +44,10 @@ export const useMapStore = defineStore('map', () => {
     return !!getLayer(layerId)
   }
 
+  function hasBaseLayer(layerId: string) {
+    return !!(baseLayerContext.value?.id === layerId ? baseLayerContext.value : undefined)
+  }
+
   function getLayer(layerId: string): Layer | undefined {
     return layersContext.value.find(layer => layer.id === layerId)
   }
@@ -73,8 +77,10 @@ export const useMapStore = defineStore('map', () => {
     mapIsInitialized,
     mapContext,
     layersContext,
+    baseLayerContext,
     viewContext,
     hasLayer,
+    hasBaseLayer,
     setBaseLayer,
     setLayersContext,
     setView,
