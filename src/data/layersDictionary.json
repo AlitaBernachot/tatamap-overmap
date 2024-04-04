@@ -18,6 +18,15 @@
             }
         },
         {
+            "id": "base-open-topo-map",
+            "name": "Open topo map",
+            "isBaseLayer": true,
+            "layerDefinition": {
+                "type": "xyz",
+                "url": "https://a.tile.opentopomap.org/{z}/{x}/{y}.png"
+            }
+        },
+        {
             "id": "base-osm-fr",
             "name": "Osm fr",
             "isBaseLayer": true,
