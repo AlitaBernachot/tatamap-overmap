@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const variants = ['elevated', 'flat', 'tonal', 'outlined']
 const color = ref('indigo')
@@ -7,7 +8,7 @@ const color = ref('indigo')
 
 <template>
   <h1 class="pt-14">Testing Vuetify</h1>
-  <p><a href="/map">Or open the map</a></p>
+  <p><RouterLink to="/map">Open the Map</RouterLink></p>  
   
   <v-container>
     <v-row align="center" justify="center">

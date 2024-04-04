@@ -2,6 +2,10 @@
   "name": "platymap",
   "version": "0.0.0",
   "private": true,
+  "author": {
+    "name": "Alita B."
+  },
+  "description": "A map tool",
   "type": "module",
   "scripts": {
     "dev": "vite",
