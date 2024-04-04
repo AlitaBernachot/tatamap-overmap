@@ -6,6 +6,9 @@ const color = ref('indigo')
 </script>
 
 <template>
+  <h1 class="pt-14">Testing Vuetify</h1>
+  <p><a href="/map">Or open the map</a></p>
+  
   <v-container>
     <v-row align="center" justify="center">
       <v-col
