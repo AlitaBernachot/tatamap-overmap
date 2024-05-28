@@ -21,6 +21,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@duckdb/duckdb-wasm": "^1.28.1-dev106.0",
     "@geospatial-sdk/core": "^0.0.5-alpha.2",
     "@geospatial-sdk/geocoding": "^0.0.5-alpha.2",
     "@geospatial-sdk/openlayers": "^0.0.5-alpha.2",
