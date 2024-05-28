@@ -33,7 +33,7 @@
   --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
-  --top-nav-height: 56px;
+  --top-nav-height: 0px;
 }
 
 @media (prefers-color-scheme: light) {

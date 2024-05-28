@@ -9,13 +9,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       alias: '/home',
-      component: HomeView
-    },
-    {
-      path: '/map',
-      name: 'map',
       component: MapView
-      // component: () => import('../views/MapView.vue')
     },
     {
       path: '/about',
