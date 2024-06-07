@@ -64,7 +64,7 @@
         },
         {
             "id": "overture-map-base",
-            "name": "[Overture] Base",
+            "name": "[Overture] map base",
             "layerDefinition": {
                 "type": "geojson",
                 "url": "http://localhost:3000"
@@ -76,6 +76,14 @@
             "layerDefinition": {
                 "type": "geojson",
                 "url": "http://localhost:3000/countries"
+            }
+        },
+        {
+            "id": "overture-map-places",
+            "name": "[Overture] Places",
+            "layerDefinition": {
+                "type": "geojson",
+                "url": "http://localhost:3000/places"
             }
         }
     ]
