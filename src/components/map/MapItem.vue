@@ -7,6 +7,7 @@ import { computeMapContextDiff } from '@geospatial-sdk/core'
 import { applyContextDiffToMap, createMapFromContext } from '@geospatial-sdk/openlayers'
 
 import { useMapStore } from '@/stores/map'
+import { useDuckDBWasm } from '@/composable/duckdbWasm'
 
 const mapElement = ref<HTMLElement>()
 const mapStore = useMapStore()
@@ -22,6 +23,16 @@ watch(
 
   applyContextDiffToMap(map, computeMapContextDiff(newMapContext, oldMapContext))
 }, {immediate: false})
+
+const duckdbWasm = useDuckDBWasm()
+
+watch(
+  duckdbWasm.isReady,
+  (isReady) => {
+  if (isReady) {
+    duckdbWasm.doQuery()
+  }
+})
 
 onMounted(() => {
   map = createMapFromContext(mapContext.value, mapElement.value)
