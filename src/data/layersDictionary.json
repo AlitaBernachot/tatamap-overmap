@@ -61,6 +61,22 @@
                 "featureType": "SIS_INTENSITE_EVTCOM",
                 "url": "http://georisques.gouv.fr/services?REQUEST=GetCapabilities&SERVICE=WFS&VERSION=1.1.0"
             }
+        },
+        {
+            "id": "overture-map-base",
+            "name": "[Overture] Base",
+            "layerDefinition": {
+                "type": "geojson",
+                "url": "http://localhost:3000"
+            }
+        },
+        {
+            "id": "overture-map-countries",
+            "name": "[Overture] Countries",
+            "layerDefinition": {
+                "type": "geojson",
+                "url": "http://localhost:3000/countries"
+            }
         }
     ]
 }
