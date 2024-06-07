@@ -17,7 +17,9 @@ const { baseLayerContext } = storeToRefs(mapStore)
     <h3>Basemap selector</h3>
     <ul>
       <li v-for="layer in layers" :id="`layer-${layer.id}`">
-        <input type="checkbox" :checked="baseLayerContext?.id === layer.id" @click="mapStore.setBaseLayer(layer)" />
+        <input type="checkbox"
+          :checked="baseLayerContext?.id === layer.id"
+          @click="() => { if(baseLayerContext?.id !== layer.id) mapStore.setBaseLayer(layer) }" />
         <label @click="mapStore.setBaseLayer(layer)">
           {{ layer.name || layer.id }}
         </label>

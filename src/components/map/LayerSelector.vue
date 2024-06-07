@@ -20,7 +20,10 @@ function toggleLayer(layerId: string, layer?: Layer): void {
     <h3>Layer selector</h3>
     <ul>
       <li v-for="layer in layers" :id="`layer-${layer.id}`">
-        <input type="checkbox" :checked="mapStore.hasLayer(layer.id)" @click="toggleLayer(layer.id, layer)" />
+        <input type="checkbox"
+          :checked="mapStore.hasLayer(layer.id)"
+          @click="toggleLayer(layer.id, layer)" 
+          />
         <label @click="toggleLayer(layer.id, layer)">
           {{ layer.name || layer.id }}
         </label>
