@@ -19,6 +19,7 @@ const appStore = useAppStore()
 const mapStore = useMapStore()
 
 const { baseLayers } = storeToRefs(appStore)
+const { mapIsInitialized } = storeToRefs(mapStore)
 
 const layersDictionary = <Layer[]>(jsonLayersDictionary.layersDictionary)
 const mapConfig = jsonMapConfig.mapConfig
@@ -28,6 +29,8 @@ onMounted(() => {
   mapStore.setBaseLayer(baseLayers.value[0])
   mapStore.setLayersContext([])
   mapStore.setView(<MapContextView>mapConfig.MapContextView)
+
+  mapIsInitialized.value = true
 })
 </script>
 

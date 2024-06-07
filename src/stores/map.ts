@@ -33,7 +33,6 @@ export const useMapStore = defineStore('map', () => {
 
   function setLayersContext(newLayersContext: Layer[]): void {
     layersContext.value = newLayersContext
-    mapIsInitialized.value = true
   }
 
   function setView(newViewContext: MapContextView): void {

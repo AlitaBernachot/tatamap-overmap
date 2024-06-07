@@ -11,7 +11,8 @@ import { useMapStore } from '@/stores/map'
 
 const mapElement = ref<HTMLElement>()
 const mapStore = useMapStore()
-const { mapContext, mapIsInitialized } = storeToRefs(mapStore)
+const { mapContext, mapIsInitialized, viewContext } = storeToRefs(mapStore)
+
 let map: OlMap
 
 watch(
@@ -33,6 +34,14 @@ watch(
 //     duckdbWasm.doQuery()
 //   }
 // })
+
+watch(
+  viewContext,
+  (newViewContext) => {
+    map.getView().setCenter(newViewContext.center)
+    newViewContext.zoom && map.getView().setZoom(newViewContext.zoom)
+  },
+)
 
 onMounted(() => {
   map = createMapFromContext(mapContext.value, mapElement.value)
